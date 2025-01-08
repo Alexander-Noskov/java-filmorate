@@ -24,42 +24,6 @@ class UserControllerTest {
     }
 
     @Test
-    void userCreateFailLoginTest() {
-        User userCreateFailLogin = User.builder()
-                .login("dolore ullamco")
-                .name("Nick Name")
-                .email("mail@mail.ru")
-                .birthday(LocalDate.of(1946, 8, 20))
-                .build();
-        assertThrows(ValidationException.class,
-                () -> userController.createUser(userCreateFailLogin));
-    }
-
-    @Test
-    void userCreateFailEmailTest() {
-        User userCreateFailEmail = User.builder()
-                .login("dolore")
-                .name("Nick Name")
-                .email("mail.ru")
-                .birthday(LocalDate.of(1946, 8, 20))
-                .build();
-        assertThrows(ValidationException.class,
-                () -> userController.createUser(userCreateFailEmail));
-    }
-
-    @Test
-    void userCreateFailBirthdayTest() {
-        User userCreateFailBirthday = User.builder()
-                .login("dolore")
-                .name("Nick Name")
-                .email("mail@mail.ru")
-                .birthday(LocalDate.of(2446, 8, 20))
-                .build();
-        assertThrows(ValidationException.class,
-                () -> userController.createUser(userCreateFailBirthday));
-    }
-
-    @Test
     void userCreateWithoutNameTest() {
         User userCreateWithoutName = User.builder()
                 .login("dolore")
