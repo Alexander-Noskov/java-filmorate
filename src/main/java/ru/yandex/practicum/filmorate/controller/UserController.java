@@ -57,7 +57,7 @@ public class UserController {
             log.error("Пользователь {} имеет некорректный логин", user);
             throw new ValidationException("Некорректный логин");
         }
-        if (user.getName().isBlank()) {
+        if (user.getName() == null || user.getName().isBlank()) {
             user.setName(user.getLogin());
         }
         if (user.getBirthday().isAfter(LocalDate.now())) {

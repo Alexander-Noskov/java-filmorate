@@ -63,7 +63,6 @@ class UserControllerTest {
     void userCreateWithoutNameTest() {
         User userCreateWithoutName = User.builder()
                 .login("dolore")
-                .name("")
                 .email("mail@mail.ru")
                 .birthday(LocalDate.of(1946, 8, 20))
                 .build();
