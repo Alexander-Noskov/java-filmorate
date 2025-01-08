@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UserControllerTest {
     private final UserController userController = new UserController();
