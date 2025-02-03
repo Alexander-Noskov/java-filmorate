@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 
 @Data
@@ -21,6 +22,7 @@ public class Film {
     private LocalDate releaseDate;
     @Positive(message = "Продолжительность фильма должна быть положительным числом")
     private Long duration;
+    private Set<Long> likes;
 
     @AssertTrue(message = "Дата релиза — не раньше 28 декабря 1895 года")
     public boolean isValidDate() {
