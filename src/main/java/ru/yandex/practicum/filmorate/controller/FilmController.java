@@ -49,7 +49,7 @@ public class FilmController {
     }
 
     @PutMapping("{id}/like/{userId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public void likeFilm(@PathVariable Long id, @PathVariable Long userId) {
         filmService.likeFilm(id, userId);
     }
