@@ -48,21 +48,21 @@ public class UserController {
         return userService.getFriendsByUserId(id);
     }
 
-    @PutMapping("/{id}/friends/{friend_id}")
+    @PutMapping("/{id}/friends/{friendId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUserFriend(@PathVariable Long id, @PathVariable Long friend_id) {
-        userService.addFriend(id, friend_id);
+    public void updateUserFriend(@PathVariable Long id, @PathVariable Long friendId) {
+        userService.addFriend(id, friendId);
     }
 
-    @DeleteMapping("/{id}/friends/{friend_id}")
+    @DeleteMapping("/{id}/friends/{friendId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUserFriend(@PathVariable Long id, @PathVariable Long friend_id) {
-        userService.deleteFriend(id, friend_id);
+    public void deleteUserFriend(@PathVariable Long id, @PathVariable Long friendId) {
+        userService.deleteFriend(id, friendId);
     }
 
-    @GetMapping("/{id}/friends/common/{friend_id}")
+    @GetMapping("/{id}/friends/common/{friendId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getCommonUserFriends(@PathVariable Long id, @PathVariable Long friend_id) {
-        return userService.getCommonUserFriends(id, friend_id);
+    public List<User> getCommonUserFriends(@PathVariable Long id, @PathVariable Long friendId) {
+        return userService.getCommonUserFriends(id, friendId);
     }
 }
