@@ -6,7 +6,6 @@ import ru.yandex.practicum.filmorate.exceptions.NotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +18,6 @@ public class InMemoryUserStorage implements UserStorage {
     @Override
     public User addUser(User user) {
         user.setId(userId);
-        user.setFriends(new HashSet<>());
         users.put(userId++, user);
         log.info("Пользователь создан: {}", user);
         return user;
@@ -30,9 +28,6 @@ public class InMemoryUserStorage implements UserStorage {
         if (!users.containsKey(user.getId())) {
             log.error("Пользователь {} имеет несуществующий id", user);
             throw new NotFoundException("Пользователь с таким id не существует");
-        }
-        if (user.getFriends() == null) {
-            user.setFriends(new HashSet<>());
         }
         users.put(user.getId(), user);
         log.info("Пользователь обновлен: {}", user);

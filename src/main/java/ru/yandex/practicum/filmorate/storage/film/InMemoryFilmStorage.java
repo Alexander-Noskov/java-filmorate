@@ -6,7 +6,6 @@ import ru.yandex.practicum.filmorate.exceptions.NotFoundException;
 import ru.yandex.practicum.filmorate.model.Film;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +18,6 @@ public class InMemoryFilmStorage implements FilmStorage {
     @Override
     public Film addFilm(Film film) {
         film.setId(filmId);
-        film.setLikes(new HashSet<>());
         films.put(filmId++, film);
         log.info("Фильм добавлен: {}", film);
         return film;
@@ -30,9 +28,6 @@ public class InMemoryFilmStorage implements FilmStorage {
         if (!films.containsKey(film.getId())) {
             log.error("Фильм {} имеет несуществующий id", film);
             throw new NotFoundException("Фильм с таким id не существует");
-        }
-        if (film.getLikes() == null) {
-            film.setLikes(new HashSet<>());
         }
         films.put(film.getId(), film);
         log.info("Фильм обновлен: {}", film);
