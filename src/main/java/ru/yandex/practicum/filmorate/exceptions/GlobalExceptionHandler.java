@@ -10,17 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler
+    @ExceptionHandler({MethodArgumentNotValidException.class, ValidationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponseDto handleBadRequest(final MethodArgumentNotValidException e) {
+    public ErrorResponseDto handleBadRequest(final Exception e) {
         log.error(e.getMessage());
         return new ErrorResponseDto(400, "Invalid data");
-    }
-
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponseDto handleBadRequest(final ValidationException e) {
-        return new ErrorResponseDto(400, e.getMessage());
     }
 
     @ExceptionHandler
